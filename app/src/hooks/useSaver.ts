@@ -11,7 +11,7 @@ export default function useSaver<TResult, TArgs extends any[]>(
   getSaver: (...args: TArgs) => Promise<TResult>,
   onReady?: (result: TResult) => void,
 ): TSaver<TResult, TArgs> {
-  const { loading, result, error, call } = useCaller(getSaver, onReady);
+  const { loading, ready, result, error, call } = useCaller(getSaver, onReady);
   const toast = useToast();
 
   useEffect(() => {
@@ -20,5 +20,5 @@ export default function useSaver<TResult, TArgs extends any[]>(
     }
   }, [error, toast]);
 
-  return useMemo(() => ({ result, error, loading, save: call }), [loading, result, error, call]);
+  return useMemo(() => ({ result, error, loading, ready, save: call }), [loading, ready, result, error, call]);
 }

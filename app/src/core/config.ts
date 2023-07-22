@@ -1,6 +1,5 @@
-import { merge } from 'lodash';
-
-import env from '../env';
+import { get } from 'lodash';
+import Constants from 'expo-constants';
 
 type TConfig = {
   api: {
@@ -11,6 +10,15 @@ type TConfig = {
   };
 };
 
-const config: TConfig = merge({}, env);
+const apiUrl: string = get(Constants, ['expoConfig', 'extra', 'env', 'apiUrl']) || '';
+
+const config: TConfig = {
+  api: {
+    url: apiUrl,
+  },
+  io: {
+    url: apiUrl,
+  },
+};
 
 export default config;

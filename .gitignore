@@ -12,10 +12,10 @@ node_modules/
 package-lock.json
 
 # ignore environment files
+.env
 env.ts
 
 # ignore sensitive / private information
-app/google-services.json
 
 # other files
 app/.expo/
