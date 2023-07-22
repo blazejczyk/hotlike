@@ -5,16 +5,11 @@ import isBefore from 'date-fns/isBefore';
 
 import { ResponseError, UnauthorizedError, InvalidParametersError, ErrorCode } from './errors';
 import { getUser } from '../repos/users';
-import { getSession } from '../services/session';
+import { getSession, TSession } from '../services/session';
 
 interface IRequest<TParams extends Array<string>, TBody> extends Request<Record<TParams[number], string>, any, TBody> {}
 
 type TMethod = 'get' | 'post' | 'put' | 'delete';
-
-type TSession = {
-  userId: string; // logged user id
-  // ... some other session properties ...
-};
 
 type TMeta<TParams extends Array<string>, TBody> = {
   req: IRequest<TParams, TBody>;

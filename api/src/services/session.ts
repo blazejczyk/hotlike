@@ -3,7 +3,7 @@ import { isString } from 'lodash';
 
 import config from '../core/config';
 
-type TSession = {
+export type TSession = {
   userId: string; // logged user id
   authedAt: string;
   // ... some other session properties ...
