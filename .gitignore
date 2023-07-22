@@ -1,0 +1,21 @@
+# ignore system-specific files
+.DS_Store
+
+# ignore IDE / editor-specific files
+*.idea/
+.vscode/
+
+# ignore build artifacts
+
+# ignore package managers
+node_modules/
+package-lock.json
+
+# ignore environment files
+env.ts
+
+# ignore sensitive / private information
+app/google-services.json
+
+# other files
+app/.expo/
