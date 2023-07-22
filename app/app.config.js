@@ -18,6 +18,11 @@ const appConfig = {
     android: {
       package: 'com.hotlike.hotlike',
       googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
+      config: {
+        googleMaps: {
+          apiKey: process.env.GOOGLE_MAPS_KEY,
+        },
+      },
     },
     ios: {
       supportsTablet: true,

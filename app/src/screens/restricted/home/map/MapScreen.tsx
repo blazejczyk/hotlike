@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native';
-import MapView, { Region } from 'react-native-maps';
+import MapView, { Region, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Linking from 'expo-linking';
 import { StackScreenProps } from '@react-navigation/stack/src/types';
 import { Text } from '@ui-kitten/components';
@@ -137,7 +137,14 @@ export default function MapScreen({ navigation, route }: TMapScreenProps): JSX.E
       {loadingAuthedUserError && !authedUser && <LoadingError onReload={reloadAuthedUser} />}
       {authedUser && initialRegion && (
         <View style={styles.mapViewContainer}>
-          <MapView ref={mapViewRef} initialRegion={initialRegion} rotateEnabled={false} customMapStyle={mapStyle} style={styles.mapView}>
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            ref={mapViewRef}
+            initialRegion={initialRegion}
+            rotateEnabled={false}
+            customMapStyle={mapStyle}
+            style={styles.mapView}
+          >
             <UserMarker user={authedUser} />
             {ongoingMeeting
               ? <OngoingMeetingDestination ongoingMeeting={ongoingMeeting} onReady={handleOngoingMeetingReady} />
