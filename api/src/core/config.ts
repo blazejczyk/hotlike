@@ -5,10 +5,6 @@
  * (only "tech" settings required to proper app working)
  */
 
-import { merge } from 'lodash';
-
-import env from '../env';
-
 type TConfig = {
   app: {
     port: string;
@@ -41,7 +37,7 @@ type TConfig = {
     };
   };
   photo: {
-    compressionThreshold: number;
+    compressionThreshold: number; // files bigger than this will be compressed before saving
     image: {
       url: (photoId: string) => string;
       quality: number;
@@ -54,23 +50,57 @@ type TConfig = {
   salt: string; // this CANNOT be changed in the future!
 };
 
-const config: TConfig = merge(
-  {
-    app: {
-      port: process.env.PORT || '3000',
-      maxBodySize: 5,
-    },
-    photo: {
-      compressionThreshold: 307200, // 300 kB => files bigger than this will be compressed before saving
-      image: {
-        quality: 90,
-      },
-      thumbnail: {
-        quality: 75,
-      },
+const config: TConfig = {
+  app: {
+    port: getEnvValue('APP_PORT'),
+    maxBodySize: 5,
+  },
+  db: {
+    name: getEnvValue('DB_NAME'),
+    username: getEnvValue('DB_USERNAME'),
+    password: getEnvValue('DB_PASSWORD'),
+    host: getEnvValue('DB_HOST'),
+  },
+  mail: {
+    sender: getEnvValue('MAIL_SENDER'),
+    transport: {
+      host: getEnvValue('MAIL_TRANSPORT_HOST'),
+      port: Number(getEnvValue('MAIL_TRANSPORT_PORT')),
+      username: getEnvValue('MAIL_TRANSPORT_USERNAME'),
+      password: getEnvValue('MAIL_TRANSPORT_PASSWORD'),
     },
   },
-  env
-);
+  session: {
+    secret: getEnvValue('SESSION_SECRET'),
+  },
+  apis: {
+    google: {
+      key: getEnvValue('API_GOOGLE_KEY'),
+    },
+    tomtom: {
+      key: getEnvValue('API_TOMTOM_KEY'),
+    },
+  },
+  photo: {
+    compressionThreshold: 307200, // 300 kB
+    image: {
+      url: (photoId: string) => `${getEnvValue('PHOTO_HOST')}/photos/${photoId}/image`,
+      quality: 90,
+    },
+    thumbnail: {
+      url: (photoId: string) => `${getEnvValue('PHOTO_HOST')}/photos/${photoId}/thumbnail`,
+      quality: 75,
+    },
+  },
+  salt: getEnvValue('SALT'),
+};
+
+function getEnvValue(envKey: string): string {
+  const envValue = process.env[envKey];
+  if (envValue === undefined) {
+    throw new Error(`Environmental variable ${envKey} is missing.`);
+  }
+  return envValue;
+}
 
 export default config;
