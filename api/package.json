@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npx tsc && node dist/core/server.js",
+    "build": "npx tsc",
+    "start": "node dist/core/server.js",
     "server:inspect": "nodemon --inspect src/core/server.ts",
     "tasker:inspect": "nodemon --inspect src/core/tasker.ts"
   },
