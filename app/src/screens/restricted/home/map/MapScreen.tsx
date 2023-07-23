@@ -91,7 +91,7 @@ export default function MapScreen({ navigation, route }: TMapScreenProps): JSX.E
     }
   });
 
-  useSocketEvent(SocketEvent.MESSAGE_RECEIVED, async () => {
+  useSocketEvent(SocketEvent.MESSAGE_RECEIVED, () => {
     const parentNavigation = navigation.getParent();
     if (!parentNavigation) {
       return;
