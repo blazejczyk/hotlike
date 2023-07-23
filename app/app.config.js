@@ -24,10 +24,6 @@ const appConfig = {
           apiKey: process.env.GOOGLE_MAPS_KEY,
         },
       },
-      adaptiveIcon: {
-        foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#fff8fc'
-      },
     },
     ios: {
       supportsTablet: true,
