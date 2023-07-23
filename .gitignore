@@ -9,11 +9,9 @@
 
 # ignore package managers
 node_modules/
-package-lock.json
 
 # ignore environment files
 .env
-env.ts
 
 # ignore sensitive / private information
 
