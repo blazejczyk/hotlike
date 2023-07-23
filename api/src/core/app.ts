@@ -13,6 +13,7 @@ app.use(express.json({ limit: `${config.app.maxBodySize}mb` }));
 app.use(express.urlencoded({ extended: false, limit: `${config.app.maxBodySize}mb` }));
 app.use(cookieParser());
 app.use('/', router);
+app.use(express.static('public'))
 app.use(handleUnexpectedError);
 app.set('port', config.app.port);
 
