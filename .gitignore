@@ -6,6 +6,7 @@
 .vscode/
 
 # ignore build artifacts
+api/dist
 
 # ignore package managers
 node_modules/
