@@ -186,16 +186,16 @@ export default function LoginScreen({ navigation }: TLoginScreenProps): JSX.Elem
                   appearance={logging ? 'outline' : 'filled'}
                   accessoryLeft={logging ? renderSpinner : undefined}
                   onPress={handleLogin}
-                  style={styles.button}
                   disabled={logging}
                 >
                   {logging ? 'LOGGING IN...' : 'LOG IN'}
                 </Button>
-                <FacebookButton
-                  text="LOG IN WITH FACEBOOK"
-                  disabled={logging}
-                  onPress={handleFacebookLogin}
-                />
+                {/*<FacebookButton*/}
+                {/*  text="LOG IN WITH FACEBOOK"*/}
+                {/*  disabled={logging}*/}
+                {/*  onPress={handleFacebookLogin}*/}
+                {/*  style={styles.facebookButton}*/}
+                {/*/>*/}
               </View>
               <View style={styles.links}>
                 <TouchableOpacity onPress={handleRemindPassword} style={styles.link}>
@@ -233,8 +233,8 @@ const styles = StyleSheet.create({
   buttons: {
     marginTop: 20,
   },
-  button: {
-    marginBottom: 12,
+  facebookButton: {
+    marginTop: 12,
   },
   facebookIcon: {
     width: 22,

@@ -108,10 +108,10 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
           </CheckBox>
         </View>
         <ContinueButton text="FINISH" loading={registering} onComplete={privacyPolicyAccepted ? onComplete : undefined} />
-        <View style={styles.facebookRegistrationInfo}>
-          <Text appearance="hint">OR if you don't like setting password:</Text>
-        </View>
-        <FacebookButton text="SIGN UP WITH FACEBOOK" disabled={registering || !email || !isValidEmail(email)} onPress={handleFacebookRegistration} />
+        {/*<View style={styles.facebookRegistrationInfo}>*/}
+        {/*  <Text appearance="hint">OR if you don't like setting password:</Text>*/}
+        {/*</View>*/}
+        {/*<FacebookButton text="SIGN UP WITH FACEBOOK" disabled={registering || !email || !isValidEmail(email)} onPress={handleFacebookRegistration} />*/}
       </View>
       <PrivacyPolicyModal visible={privacyPolicyVisible} onClose={handleHidePrivacyPolicy} />
     </ScrollView>
