@@ -15,7 +15,7 @@
     },
     "production": {
       "env": {
-        "EXPO_PUBLIC_API_URL": "todo: set when production backend is ready"
+        "EXPO_PUBLIC_API_URL": "https://hotlike-api-rmaed.ondigitalocean.app"
       }
     }
   },
