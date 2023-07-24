@@ -15,6 +15,8 @@ type TConfig = {
     username: string;
     password: string;
     host: string;
+    port?: number;
+    ssl?: boolean;
   };
   mail: {
     sender: string, // default sender email
@@ -60,6 +62,8 @@ const config: TConfig = {
     username: getEnvValue('DB_USERNAME'),
     password: getEnvValue('DB_PASSWORD'),
     host: getEnvValue('DB_HOST'),
+    port: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
+    ssl: Boolean(process.env.SSL),
   },
   mail: {
     sender: getEnvValue('MAIL_SENDER'),
