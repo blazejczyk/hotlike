@@ -63,7 +63,7 @@ const config: TConfig = {
     password: getEnvValue('DB_PASSWORD'),
     host: getEnvValue('DB_HOST'),
     port: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
-    ssl: Boolean(process.env.SSL),
+    ssl: Boolean(process.env.DB_SSL),
   },
   mail: {
     sender: getEnvValue('MAIL_SENDER'),
