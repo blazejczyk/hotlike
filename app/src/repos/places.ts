@@ -1,5 +1,5 @@
 import { get } from '../core/api';
-import { Activity } from './auth';
+import { Activity } from '../services/enums';
 
 export type TPlace = {
   id: string;

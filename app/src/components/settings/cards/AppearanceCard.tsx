@@ -3,9 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import { range } from 'lodash';
 import { CheckBox } from '@ui-kitten/components';
 
-import { TAuthedUser, TAuthedUserUpdatableFields, Body } from '../../../repos/auth';
+import { TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
 import SettingsCard from '../SettingsCard';
 import SettingsDropdown, { TSettingsDropdownOption } from '../SettingsDropdown';
+import { Body } from '../../../services/enums';
 
 type TAppearanceProps = {
   user: Pick<TAuthedUser, 'height' | 'body' | 'smoking'>;

@@ -1,6 +1,6 @@
 import { get } from '../core/api';
 import { TPhoto } from './photos';
-import { Gender } from './auth';
+import { Gender } from '../services/enums';
 
 export type TUser = {
   id: string;

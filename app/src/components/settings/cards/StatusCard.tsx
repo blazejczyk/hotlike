@@ -2,9 +2,10 @@ import { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { CheckBox } from '@ui-kitten/components';
 
-import { Goal, TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
+import { TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
 import SettingsCard from '../SettingsCard';
 import SettingsDropdown, { TSettingsDropdownOption } from '../SettingsDropdown';
+import { Goal } from '../../../services/enums';
 
 type TStatusProps = {
   user: Pick<TAuthedUser, 'goals' | 'hasKids'>;

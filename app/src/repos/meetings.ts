@@ -1,6 +1,6 @@
 import { get, post, put, delete_ } from '../core/api';
-import { Activity, Gender } from './auth';
 import { TPhoto } from './photos';
+import { Activity, Gender } from '../services/enums';
 
 export type TMeeting = {
   id: string;

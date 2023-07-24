@@ -2,8 +2,9 @@ import { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { CheckBox, Toggle, Text } from '@ui-kitten/components';
 
-import { Gender, TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
+import { TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
 import SettingsCard from '../SettingsCard';
+import { Gender } from '../../../services/enums';
 
 type TPreferencesProps = {
   user: Pick<TAuthedUser, 'preferredGenders' | 'prefersTaller' | 'prefersShorter' | 'rejectsSmoking' | 'rejectsKids'>;

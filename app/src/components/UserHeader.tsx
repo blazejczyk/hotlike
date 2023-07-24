@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Divider, Icon, Text, TopNavigation, TopNavigationAction, useTheme } from '@ui-kitten/components';
 
 import SvgIcon from './SvgIcon';
-import { Gender } from '../repos/auth';
+import { Gender } from '../services/enums';
 
 type TUserHeaderProps = {
   name: string;

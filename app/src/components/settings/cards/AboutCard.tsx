@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { Activity, Personality, TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
+import { TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
 import SettingsCard from '../SettingsCard';
 import SettingsDropdown, { TSettingsDropdownOption } from '../SettingsDropdown';
 import SvgIcon from '../../SvgIcon';
+import { Activity, Personality } from '../../../services/enums';
 
 type TAboutProps = {
   user: Pick<TAuthedUser, 'activities' | 'personality'>;

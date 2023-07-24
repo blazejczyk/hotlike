@@ -1,5 +1,5 @@
 import { get } from '../core/api';
-import { Gender, Activity } from './auth';
+import { Activity, Gender } from '../services/enums';
 
 export type TSuggestion = {
   user: {

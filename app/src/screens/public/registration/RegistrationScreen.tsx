@@ -14,12 +14,13 @@ import PhotoStep from './steps/PhotoStep';
 import SettingsStep from './steps/SettingsStep';
 import AuthStep from './steps/AuthStep';
 import FinishStep from './steps/FinishStep';
-import { Body, Gender, Personality, TRegisteredAuthedUser, createAuthedUser } from '../../../repos/auth';
+import { TRegisteredAuthedUser, createAuthedUser } from '../../../repos/auth';
 import useConstantsLoader from '../../../hooks/loaders/useConstantsLoader';
 import Loading from '../../../components/Loading';
 import LoadingError from '../../../components/LoadingError';
 import { isValidEmail, isValidPassword } from '../../../services/utils';
 import useSaver from '../../../hooks/useSaver';
+import { Body, Gender, Personality } from '../../../services/enums';
 
 const defaultRegisteredAuthedUser: TRegisteredAuthedUser = {
   email: '',

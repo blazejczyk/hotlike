@@ -6,9 +6,10 @@ import subYears from 'date-fns/subYears';
 import format from 'date-fns/format';
 
 import SvgIcon from '../../../../components/SvgIcon';
-import { Gender, TRegisteredAuthedUser } from '../../../../repos/auth';
+import { TRegisteredAuthedUser } from '../../../../repos/auth';
 import ContinueButton from '../ContinueButton';
 import PublicScopeHeader from '../../../../components/PublicScopeHeader';
+import { Gender } from '../../../../services/enums';
 
 const now = new Date();
 const minDateOfBirth = subYears(now, 100);

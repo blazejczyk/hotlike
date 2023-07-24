@@ -14,11 +14,11 @@ import LoadingError from '../../../../components/LoadingError';
 import { sendInvitation } from '../../../../repos/meetings';
 import Countdown from '../../../../components/Countdown';
 import useDispatchContext from '../../../../hooks/contexts/useDispatchContext';
-import { Gender } from '../../../../repos/auth';
 import UserHeader from '../../../../components/UserHeader';
 import MeetingView from '../../../../components/MeetingView';
 import useReceivedInvitationLoader from '../../../../hooks/loaders/useReceivedInvitationLoader';
 import useOngoingMeetingLoader from '../../../../hooks/loaders/useOngoingMeetingLoader';
+import { Gender } from '../../../../services/enums';
 
 type TSuggestionScreenProps = StackScreenProps<TSuggestionsNavigator, 'suggestionScreen'>;
 

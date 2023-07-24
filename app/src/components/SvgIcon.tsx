@@ -3,7 +3,7 @@ import { SvgProps } from 'react-native-svg';
 import { StyleProp } from 'react-native/Libraries/StyleSheet/StyleSheet';
 import { ViewStyle } from 'react-native/Libraries/StyleSheet/StyleSheetTypes';
 
-import { Gender, Activity } from '../repos/auth';
+import { Activity, Gender } from '../services/enums';
 
 export type TGeneralIconName = 'boy' | 'camera' | 'champagne' | 'cupid' | 'girl' | 'head' | 'lock' | 'message' | 'path' | 'pin' | 'plug' | 'signal' | 'target';
 
