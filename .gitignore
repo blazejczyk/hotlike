@@ -10,6 +10,7 @@ api/dist
 
 # ignore package managers
 node_modules/
+app/package-lock.json
 
 # ignore environment files
 .env
