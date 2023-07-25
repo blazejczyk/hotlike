@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
   tls: {
     ciphers: 'SSLv3'
   },
-  secure: false,
+  secure: config.mail.transport.port === 465,
 });
 
 export async function send(options: Mail.Options): Promise<void> {
