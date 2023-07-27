@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Marker } from 'react-native-maps';
 import { Icon, useTheme } from '@ui-kitten/components';
+import { LocationAccuracy } from 'expo-location';
 
 import { TAuthedUser } from '../../../../repos/auth';
 import Photo from '../../../../components/Photo';
@@ -12,9 +13,10 @@ import useLocationChange from '../../../../hooks/useLocationChange';
 
 type TUserMarkerProps = {
   user: TAuthedUser;
+  accuracy: LocationAccuracy;
 };
 
-export default function UserMarker({ user }: TUserMarkerProps): JSX.Element {
+export default function UserMarker({ user, accuracy }: TUserMarkerProps): JSX.Element {
   const theme = useTheme();
   const [coordinate, setCoordinate] = useState<{ latitude: number; longitude: number; }>({ latitude: Number(user.latitude), longitude: Number(user.longitude) });
   const { setAuthedUser } = useDispatchContext();
@@ -26,10 +28,14 @@ export default function UserMarker({ user }: TUserMarkerProps): JSX.Element {
 
   const saveUserCoordinateThrottled = useMemo(() => saveUserCoordinate, [saveUserCoordinate]); // in case if the user is moving very fast
 
-  useLocationChange(10, (latitude, longitude) => {
-    setCoordinate({ latitude, longitude });
-    saveUserCoordinateThrottled({ latitude: latitude.toString(), longitude: longitude.toString() });
-  });
+  useLocationChange(
+    10,
+    (latitude, longitude) => {
+      setCoordinate({ latitude, longitude });
+      saveUserCoordinateThrottled({ latitude: latitude.toString(), longitude: longitude.toString() });
+    },
+    accuracy,
+  );
 
   const photoStyle = useMemo(() => [styles.photo, { borderColor: theme['color-primary-default'] }], [theme]);
 

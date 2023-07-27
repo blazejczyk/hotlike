@@ -4,6 +4,7 @@ import MapView, { Region, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Linking from 'expo-linking';
 import { StackScreenProps } from '@react-navigation/stack/src/types';
 import { Text } from '@ui-kitten/components';
+import * as Location from 'expo-location';
 
 import ScreenContainer from '../../../../components/ScreenContainer';
 import { coordinateDeltas } from '../../../../services/constants';
@@ -145,7 +146,7 @@ export default function MapScreen({ navigation, route }: TMapScreenProps): JSX.E
             customMapStyle={mapStyle}
             style={styles.mapView}
           >
-            <UserMarker user={authedUser} />
+            <UserMarker user={authedUser} accuracy={ongoingMeeting ? Location.Accuracy.BestForNavigation : Location.Accuracy.Balanced} />
             {ongoingMeeting
               ? <OngoingMeetingDestination ongoingMeeting={ongoingMeeting} onReady={handleOngoingMeetingReady} />
               : <Predictions />

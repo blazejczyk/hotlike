@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import * as Location from 'expo-location';
+import { LocationAccuracy } from 'expo-location';
 
 export default function useLocationChange(
   distance: number, // meters
-  callback: (latitude: number, longitude: number) => void
+  callback: (latitude: number, longitude: number) => void,
+  accuracy: LocationAccuracy = Location.Accuracy.Balanced,
 ): void {
   const callbackRef = useRef<(latitude: number, longitude: number) => void>(callback);
 
@@ -13,7 +15,7 @@ export default function useLocationChange(
 
   useEffect(() => {
     const locationWatcherPromise = Location.watchPositionAsync({
-      accuracy: Location.Accuracy.Balanced, // todo: better accuracy ?
+      accuracy,
       distanceInterval: distance,
     }, ({ coords: { latitude, longitude } }) => {
       callbackRef.current(latitude, longitude);
@@ -24,5 +26,5 @@ export default function useLocationChange(
         remove();
       })();
     };
-  }, [distance]);
+  }, [accuracy, distance]);
 }

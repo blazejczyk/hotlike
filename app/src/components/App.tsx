@@ -49,4 +49,4 @@ const customMapping: CustomSchemaType = {
 
 enableMapSet();
 registerRootComponent(App);
-setForegroundNotifications()
+setForegroundNotifications();
