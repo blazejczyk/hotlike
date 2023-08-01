@@ -7,6 +7,7 @@
 
 # ignore build artifacts
 api/dist
+web/build
 
 # ignore package managers
 node_modules/

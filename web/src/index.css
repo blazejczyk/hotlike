@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: #222B45;
+}
+
+a {
+  color: #0095FF;
+  text-decoration: none;
+}
+
+#root {
+  height: 100%;
+}
