@@ -28,7 +28,7 @@ function Download() {
         </div>
       </div>
       <div className="buttons">
-        <DownloadButton icon="android" storeName="GOOGLE PLAY" onClick={handleAndroidDownload} />
+        <DownloadButton icon="android" storeName="GOOGLE PLAY" onClick={handleAndroidDownload} disabled />
         <DownloadButton icon="ios" storeName="APP STORE" onClick={handleIosDownload} disabled />
       </div>
     </div>
