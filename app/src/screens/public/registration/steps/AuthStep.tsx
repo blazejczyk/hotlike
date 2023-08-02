@@ -5,11 +5,10 @@ import { Text, Input, CheckBox } from '@ui-kitten/components';
 import PublicScopeHeader from '../../../../components/PublicScopeHeader';
 import { TRegisteredAuthedUser } from '../../../../repos/auth';
 import ContinueButton from '../ContinueButton';
-import FacebookButton from '../../../../components/FacebookButton';
-import { isValidEmail } from '../../../../services/utils';
 import { ErrorCode, isResponseError, TValidationError } from '../../../../core/errors';
 import useToast from '../../../../hooks/useToast';
 import PrivacyPolicyModal from '../PrivacyPolicyModal';
+import TermsModal from '../TermsModal';
 
 type TAuthStepProps = {
   registeredAuthedUser: TRegisteredAuthedUser;
@@ -21,8 +20,9 @@ type TAuthStepProps = {
 
 export default function AuthStep({ registeredAuthedUser: { email, password }, registering, registrationError, onChange, onComplete }: TAuthStepProps): JSX.Element {
   const toast = useToast();
-  const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState<boolean>(false);
+  const [consentAccepted, setConsentAccepted] = useState<boolean>(false);
   const [privacyPolicyVisible, setPrivacyPolicyVisible] = useState<boolean>(false);
+  const [termsVisible, setTermsVisible] = useState<boolean>(false);
 
   const [emailError, setEmailError] = useState<string>('');
 
@@ -47,6 +47,14 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
 
   const handleHidePrivacyPolicy = useCallback(() => {
     setPrivacyPolicyVisible(false);
+  }, []);
+
+  const handleShowTerms = useCallback(() => {
+    setTermsVisible(true);
+  }, []);
+
+  const handleHideTerms = useCallback(() => {
+    setTermsVisible(false);
   }, []);
 
   useEffect(() => {
@@ -97,23 +105,24 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
         />
         <View style={styles.privacyPolicyCheckboxContainer}>
           <CheckBox
-            checked={privacyPolicyAccepted}
-            onChange={setPrivacyPolicyAccepted}
+            checked={consentAccepted}
+            onChange={setConsentAccepted}
           >
             {(props) => (
               <Text {...props}>
-                I accept the app's <Text category="p2" status="info" onPress={handleShowPrivacyPolicy}>privacy policy</Text>.
+                I accept <Text category="p2" status="info" onPress={handleShowPrivacyPolicy}>privacy policy</Text> and <Text category="p2" status="info" onPress={handleShowTerms}>terms of use</Text>.
               </Text>
             )}
           </CheckBox>
         </View>
-        <ContinueButton text="FINISH" loading={registering} onComplete={privacyPolicyAccepted ? onComplete : undefined} />
+        <ContinueButton text="FINISH" loading={registering} onComplete={consentAccepted ? onComplete : undefined} />
         {/*<View style={styles.facebookRegistrationInfo}>*/}
         {/*  <Text appearance="hint">OR if you don't like setting password:</Text>*/}
         {/*</View>*/}
         {/*<FacebookButton text="SIGN UP WITH FACEBOOK" disabled={registering || !email || !isValidEmail(email)} onPress={handleFacebookRegistration} />*/}
       </View>
       <PrivacyPolicyModal visible={privacyPolicyVisible} onClose={handleHidePrivacyPolicy} />
+      <TermsModal visible={termsVisible} onClose={handleHideTerms} />
     </ScrollView>
   );
 }
