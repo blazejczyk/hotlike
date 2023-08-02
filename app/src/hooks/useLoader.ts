@@ -3,8 +3,10 @@ import { useEffect, useMemo, useRef } from 'react';
 import useCaller, { TCallerState } from './useCaller';
 import useStateContext from './contexts/useStateContext';
 import useDispatchContext from './contexts/useDispatchContext';
-import { TState } from '../store/contexts/state';
+import { initialState, TState } from '../store/contexts/state';
 import { TDispatch } from '../store/contexts/dispatch';
+import { ErrorCode, isResponseError } from '../core/errors';
+import { removeToken } from '../services/storage';
 
 export type TLoader<TResult, TArgs extends any[] = any[]> = TCallerState<TResult> & {
   load: (...args: TArgs) => Promise<void>;
@@ -43,6 +45,15 @@ export default function useLoader<TResult, TArgs extends any[] = any[]>( // 'TRe
       addInitializedLoader(loaderName);
     }
   }, [isInitialized, storedResult, call, addInitializedLoader, loaderName]);
+
+  useEffect(() => {
+    (async () => {
+      if (error && isResponseError(error) && error.code === ErrorCode.UNAUTHORIZED) {
+        await removeToken();
+        dispatch.resetState(initialState);
+      }
+    })();
+  }, [error, dispatch]);
 
   // todo: there's a minor issue while storedResult is not set yet => this causes loading = false and error = false despite the fact the result is ready.
   return useMemo(() => ({ loading, ready, error, result: storedResult, load: call }), [loading, ready, error, storedResult, call]);
