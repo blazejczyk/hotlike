@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { CheckBox, Toggle, Text } from '@ui-kitten/components';
+import { CheckBox, Toggle, Text, Avatar } from '@ui-kitten/components';
 
 import { TAuthedUser, TAuthedUserUpdatableFields } from '../../../repos/auth';
 import SettingsCard from '../SettingsCard';
@@ -81,7 +81,12 @@ export default function PreferencesCard({ user, onChange }: TPreferencesProps) {
           onChange={handleUpdateRejectsSmoking}
           style={styles.rejectsSmokingToggle}
         >
-          No smokers
+          {(props) => (
+            <View {...props} style={[props?.style, styles.toggleContent]}>
+              <Avatar source={require('../../../../assets/images/no-smokers.png')} size="small" />
+              <Text category="s2">No smokers</Text>
+            </View>
+          )}
         </Toggle>
       </View>
       <View style={styles.toggleContainer}>
@@ -90,7 +95,12 @@ export default function PreferencesCard({ user, onChange }: TPreferencesProps) {
           onChange={handleUpdateRejectsKids}
           style={styles.rejectsKidsToggle}
         >
-          No parents
+          {(props) => (
+            <View {...props} style={[props?.style, styles.toggleContent]}>
+              <Avatar source={require('../../../../assets/images/no-parents.png')} size="small" />
+              <Text category="s2">No parents</Text>
+            </View>
+          )}
         </Toggle>
       </View>
     </SettingsCard>
@@ -108,6 +118,11 @@ const styles = StyleSheet.create({
   },
   toggleContainer: {
     flexDirection: 'row',
+  },
+  toggleContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
   },
   rejectsSmokingToggle: {
     marginTop: 7,

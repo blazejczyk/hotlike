@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { enableMapSet } from "immer";
 import { CustomSchemaType } from '@eva-design/dss';
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 
 import StoreProvider from '../store/provider';
 import Content from './Content';
@@ -20,7 +20,7 @@ export default function App() {
       <ApplicationProvider {...eva} theme={eva.light} customMapping={customMapping}>
         <SafeAreaProvider>
           <StoreProvider>
-            {/*<StatusBar style="auto" translucent={false} backgroundColor="transparent" />*/}
+            <StatusBar style="auto" translucent={false} backgroundColor="transparent" />
             <NavigationContainer>
               <Content />
             </NavigationContainer>
