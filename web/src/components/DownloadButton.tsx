@@ -11,7 +11,6 @@ type TDownloadButtonProps = {
 function DownloadButton({ icon, storeName, onClick, disabled }: TDownloadButtonProps) {
   return (
     <button className="button" onClick={onClick} disabled={disabled} css={styles}>
-      {/*<img src={`/images/${icon}.png`} className="store-icon" />*/}
       <img src={`/images/${icon}.png`} className="store-icon" />
       <div className="store-info">
         <div className="store-download-text">{disabled ? 'AVAILABLE SOON IN' : 'DOWNLOAD FROM'}</div>

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 import Article from '../components/Article';
 import Paragraph from '../components/Paragraph';
@@ -96,7 +97,8 @@ function PrivacyPolicy() {
           </ListItem>
           <ListItem title="Deletion.">
             You can request the deletion of your personal data from our database at any time, unless it conflicts with
-            applicable laws or our legitimate interests.
+            applicable laws or our legitimate interests. If you wish to do this, please read our step-by-step
+            procedure <Link to="/deletion">how to delete your account</Link> and all related data.
           </ListItem>
           <ListItem title="Withdrawal of consent.">
             If we process your data based on your consent, you can withdraw it at any time.
