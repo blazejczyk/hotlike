@@ -10,16 +10,21 @@ type TListItem = {
 
 function Navigation() {
   return (
-    <ul css={styles}>
-      {listItems.map(({ title, href }, idx) => (
-        <Fragment key={idx}>
-          <li>
-            <Link to={href}>{title}</Link>
-          </li>
-          {(idx !== listItems.length - 1) && (<li> | </li>)}
-        </Fragment>
-      ))}
-    </ul>
+    <div css={styles}>
+      <ul className="list">
+        {listItems.map(({ title, href }, idx) => (
+          <Fragment key={idx}>
+            <li>
+              <Link to={href}>{title}</Link>
+            </li>
+            {(idx !== listItems.length - 1) && (<li> | </li>)}
+          </Fragment>
+        ))}
+      </ul>
+      <div className="copyrights">
+        &copy; 2023 HotLike by Eryk Blazejczyk. All rights reserved.
+      </div>
+    </div>
   );
 }
 
@@ -51,13 +56,20 @@ const listItems: TListItem[] = [
 ];
 
 const styles = css`
-  list-style-type: none;
-  margin: 20px 0 0 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
+  .list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .copyrights {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+  }
 `;
 
 export default Navigation;

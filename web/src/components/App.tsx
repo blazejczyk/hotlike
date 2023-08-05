@@ -16,16 +16,14 @@ function App() {
   );
 }
 
-const APP_PADDING = 20; // px
-
 const styles = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
   background-image: url('/images/brick.png');
-  padding: ${APP_PADDING}px;
-  height: calc(100% - ${2 * APP_PADDING}px);
+  padding: 0 20px;
+  height: 100%;
 `;
 
 export default App;

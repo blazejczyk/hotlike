@@ -37,6 +37,7 @@ function Content() {
 const styles = css`
   overflow: auto;
   flex: auto;
+  margin: 20px 0;
 `;
 
 export default Content;
