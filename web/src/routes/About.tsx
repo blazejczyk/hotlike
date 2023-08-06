@@ -17,6 +17,9 @@ function About() {
       <Paragraph>
         Forget about time-consuming swiping and repetitive boring chats leading nowhere. Stop wasting your time. Get
         outside and start meeting new people doing what you usually like doing. Immediately.
+        <div className="image-container">
+          <img src="/images/feature.png" className="feature" />
+        </div>
       </Paragraph>
       <Paragraph>
         Okay, but <Importance>how is it possible</Importance>? Well, it's pretty easy. Install the app, add some photos,
@@ -26,7 +29,7 @@ function About() {
         The fundamental thing of the app is the <Importance>map</Importance> screen. If there are active people also
         using the app, on this map you're going to see zones (red circles) where you can find some people ready to meet
         you.
-        <div className="screenshot-container">
+        <div className="image-container">
           <img src="/images/preview1.jpg" className="screenshot" />
         </div>
       </Paragraph>
@@ -36,13 +39,13 @@ function About() {
       <Paragraph>
         Soon the app will show you date ideas. For example it'll suggest you to meet someone in the near
         coffee shop. The only thing you need to do is to <Importance>ask someone out</Importance>.
-        <div className="screenshot-container">
+        <div className="image-container">
           <img src="/images/preview2.jpg" className="screenshot" />
         </div>
       </Paragraph>
       <Paragraph>
         Or... the same thing can be done by other people around you. They can ask you out as well!
-        <div className="screenshot-container">
+        <div className="image-container">
           <img src="/images/preview3.jpg" className="screenshot" />
         </div>
       </Paragraph>
@@ -51,7 +54,7 @@ function About() {
       </Paragraph>
       <Paragraph>
         If it happens, you'll see the walking path to this coffee shop where you're going to meet together.
-        <div className="screenshot-container">
+        <div className="image-container">
           <img src="/images/preview4.jpg" className="screenshot" />
         </div>
       </Paragraph>
@@ -63,9 +66,13 @@ function About() {
 }
 
 const styles = css`
-  .screenshot-container {
+  .image-container {
     text-align: center;
     padding-top: 10px;
+  }
+  .feature {
+    width: 100%;
+    max-width: 540px;
   }
   .screenshot {
     width: 100%;
