@@ -226,3 +226,8 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS cache.tomtom_poi_categories OWNER to doadmin;
 
 --
+
+ALTER TABLE app.places
+DROP CONSTRAINT places_source_id_unique;
+ALTER TABLE app.places
+ADD CONSTRAINT places_source_id_unique UNIQUE NULLS NOT DISTINCT (source_id, deleted_at);
