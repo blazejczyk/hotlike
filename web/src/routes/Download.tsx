@@ -9,7 +9,7 @@ function Download() {
   useTitle(defaultTitle, true);
 
   const handleAndroidDownload = useCallback(() => {
-    console.log('handle android download');
+    window.open('https://play.google.com/store/apps/details?id=com.hotlike.hotlike', '_blank');
   }, []);
 
   const handleIosDownload = useCallback(() => {
@@ -28,7 +28,7 @@ function Download() {
         </div>
       </div>
       <div className="buttons">
-        <DownloadButton icon="android" storeName="GOOGLE PLAY" onClick={handleAndroidDownload} disabled />
+        <DownloadButton icon="android" storeName="GOOGLE PLAY" onClick={handleAndroidDownload} />
         <DownloadButton icon="ios" storeName="APP STORE" onClick={handleIosDownload} disabled />
       </div>
     </div>
