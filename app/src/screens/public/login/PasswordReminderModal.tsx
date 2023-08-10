@@ -91,8 +91,12 @@ export default function PasswordReminderModal({ visible, onClose, usersConstants
   const handleActivate = useCallback(() => {
     setNewPasswordError('');
     setActivationCodeError('');
+    if (!isValidPassword(newPassword, usersConstants.minPasswordLength, usersConstants.maxPasswordLength)) {
+      setNewPasswordError('Password is invalid.')
+      return;
+    }
     callActivate();
-  }, [callActivate]);
+  }, [newPassword, usersConstants.maxPasswordLength, usersConstants.minPasswordLength, callActivate]);
 
   const handleClose = useCallback(() => {
     setEmail('');
@@ -115,6 +119,12 @@ export default function PasswordReminderModal({ visible, onClose, usersConstants
       )
       : undefined
   ), [emailError]);
+
+  const renderNewPasswordCaption = useCallback(() => (
+    <Text category="c2" status={newPasswordError ? 'danger' : 'basic'} appearance="hint" style={styles.caption}>
+      It should contain at least 8 characters including uppercase and lowercase letters, a number and a special character.
+    </Text>
+  ), [newPasswordError]);
 
   const renderConfirmedNewPasswordError = useMemo(() => (
     isConfirmedNewPasswordValid ? undefined : (
@@ -200,7 +210,7 @@ export default function PasswordReminderModal({ visible, onClose, usersConstants
                 appearance={activating ? 'outline' : 'filled'}
                 accessoryLeft={activating ? renderSpinner : undefined}
                 onPress={handleActivate}
-                disabled={activating || !newPassword || !isValidPassword(newPassword, usersConstants.minPasswordLength, usersConstants.maxPasswordLength) || (newPassword !== confirmedNewPassword) || !activationCode || activationCode.length !== 6}
+                disabled={activating || !newPassword || (newPassword !== confirmedNewPassword) || !activationCode || activationCode.length !== 6}
               >
                 {activating ? 'ACTIVATING...' : 'ACTIVATE'}
               </Button>
@@ -232,14 +242,6 @@ export default function PasswordReminderModal({ visible, onClose, usersConstants
 
 function renderSpinner() {
   return <Spinner size="tiny" />;
-}
-
-function renderNewPasswordCaption() {
-  return (
-    <Text category="c2" appearance="hint" style={styles.caption}>
-      It should contain at least 8 characters including uppercase and lowercase letters, a number and a special character.
-    </Text>
-  );
 }
 
 const styles = StyleSheet.create({

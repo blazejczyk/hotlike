@@ -119,16 +119,7 @@ export default function RegistrationScreen({ navigation }: TRegistrationScreenPr
     const settingsStepComplete = (['height', 'body', 'personality'] as (keyof TRegisteredAuthedUser)[]).every((key) => registeredAuthedUser[key]) &&
       (['smoking', 'hasKids', 'prefersTaller', 'prefersShorter', 'rejectsSmoking', 'rejectsKids'] as (keyof TRegisteredAuthedUser)[]).every((key) => registeredAuthedUser[key] !== undefined) &&
       registeredAuthedUser.activities.length > 0 && registeredAuthedUser.goals.length > 0 && registeredAuthedUser.preferredGenders.length > 0;
-    // const authStepComplete = Boolean(
-    //   (registeredAuthedUser.email && registeredAuthedUser.password &&
-    //     isValidEmail(registeredAuthedUser.email) &&
-    //     isValidPassword(registeredAuthedUser.password, constants.users.minPasswordLength, constants.users.maxPasswordLength)
-    //   ) || registeredAuthedUser.fbToken
-    // );
-    const authStepComplete = Boolean(
-      registeredAuthedUser.email && isValidEmail(registeredAuthedUser.email) &&
-      ((registeredAuthedUser.password && isValidPassword(registeredAuthedUser.password, constants.users.minPasswordLength, constants.users.maxPasswordLength)) || registeredAuthedUser.fbToken)
-    );
+    const authStepComplete = Boolean(registeredAuthedUser.email && (registeredAuthedUser.password || registeredAuthedUser.fbToken));
     return [
       {
         complete: identityStepComplete,
@@ -173,6 +164,7 @@ export default function RegistrationScreen({ navigation }: TRegistrationScreenPr
             registeredAuthedUser={registeredAuthedUser}
             registering={registeringAuthedUser}
             registrationError={registrationError}
+            usersConstants={constants.users}
             onChange={handleChangeRegisteredAuthedUser}
             onComplete={authStepComplete ? registerAuthedUser : undefined}
           />

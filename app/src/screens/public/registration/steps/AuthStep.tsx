@@ -9,22 +9,26 @@ import { ErrorCode, isResponseError, TValidationError } from '../../../../core/e
 import useToast from '../../../../hooks/useToast';
 import PrivacyPolicyModal from '../PrivacyPolicyModal';
 import TermsModal from '../TermsModal';
+import { isValidEmail, isValidPassword } from '../../../../services/utils';
+import { TConstants } from '../../../../repos/constants';
 
 type TAuthStepProps = {
   registeredAuthedUser: TRegisteredAuthedUser;
   registering: boolean;
   registrationError: any;
+  usersConstants: TConstants['users'];
   onChange: (data: Partial<TRegisteredAuthedUser>) => void;
   onComplete?: () => void;
 };
 
-export default function AuthStep({ registeredAuthedUser: { email, password }, registering, registrationError, onChange, onComplete }: TAuthStepProps): JSX.Element {
+export default function AuthStep({ registeredAuthedUser: { email, password }, registering, registrationError, usersConstants, onChange, onComplete }: TAuthStepProps): JSX.Element {
   const toast = useToast();
   const [consentAccepted, setConsentAccepted] = useState<boolean>(false);
   const [privacyPolicyVisible, setPrivacyPolicyVisible] = useState<boolean>(false);
   const [termsVisible, setTermsVisible] = useState<boolean>(false);
 
   const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
 
   const handleEmailChange = useCallback((nextEmail: string) => {
     if (emailError && nextEmail) {
@@ -34,8 +38,29 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
   }, [emailError, onChange]);
 
   const handlePasswordChange = useCallback((nextPassword: string) => {
+    if (passwordError && nextPassword) {
+      setPasswordError('');
+    }
     onChange({ password: nextPassword });
-  }, [onChange]);
+  }, [passwordError, onChange]);
+
+  const handleRegistration = useCallback(() => {
+    let hasErrors = false;
+    if (!isValidEmail(email)) {
+      setEmailError('Email is invalid.');
+      hasErrors = true;
+    }
+    if (!isValidPassword(password || '', usersConstants.minPasswordLength, usersConstants.maxPasswordLength)) {
+      setPasswordError('Password is invalid.');
+      hasErrors = true;
+    }
+    if (hasErrors) {
+      return;
+    }
+    if (onComplete) {
+      onComplete();
+    }
+  }, [email, password, usersConstants.maxPasswordLength, usersConstants.minPasswordLength, onComplete]);
 
   const handleFacebookRegistration = useCallback(() => {
 
@@ -78,6 +103,12 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
       : undefined
   ), [emailError]);
 
+  const renderPasswordCaption = useCallback(() => (
+    <Text category="c2" status={passwordError ? 'danger' : 'basic'} appearance="hint" style={styles.caption}>
+      It should contain at least 8 characters including uppercase and lowercase letters, a number and a special character.
+    </Text>
+  ), [passwordError]);
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <PublicScopeHeader
@@ -91,6 +122,7 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
           size="large"
           value={email}
           onChangeText={handleEmailChange}
+          status={emailError ? 'danger' : 'basic'}
           caption={renderEmailErrorCaption}
           style={styles.field}
         />
@@ -100,6 +132,7 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
           size="large"
           value={password}
           onChangeText={handlePasswordChange}
+          status={passwordError ? 'danger' : 'basic'}
           caption={renderPasswordCaption}
           style={styles.field}
         />
@@ -115,7 +148,7 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
             )}
           </CheckBox>
         </View>
-        <ContinueButton text="FINISH" loading={registering} onComplete={consentAccepted ? onComplete : undefined} />
+        <ContinueButton text="FINISH" loading={registering} onComplete={consentAccepted ? handleRegistration : undefined} />
         {/*<View style={styles.facebookRegistrationInfo}>*/}
         {/*  <Text appearance="hint">OR if you don't like setting password:</Text>*/}
         {/*</View>*/}
@@ -124,14 +157,6 @@ export default function AuthStep({ registeredAuthedUser: { email, password }, re
       <PrivacyPolicyModal visible={privacyPolicyVisible} onClose={handleHidePrivacyPolicy} />
       <TermsModal visible={termsVisible} onClose={handleHideTerms} />
     </ScrollView>
-  );
-}
-
-function renderPasswordCaption() {
-  return (
-    <Text category="c2" appearance="hint" style={styles.caption}>
-      It should contain at least 8 characters including uppercase and lowercase letters, a number and a special character.
-    </Text>
   );
 }
 
