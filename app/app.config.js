@@ -18,6 +18,7 @@ const appConfig = {
     ],
     android: {
       package: 'com.hotlike.hotlike',
+      versionCode: 2,
       googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
       config: {
         googleMaps: {
