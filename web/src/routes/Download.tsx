@@ -21,7 +21,7 @@ function Download() {
       <img src="/images/logo.png" className="logo" />
       <div className="slogan">
         <div className="info">
-          Meet people in <span className="crucial">real life</span> doing what you really like.
+          Meet people in <span className="crucial">real life</span> while doing what you like.
         </div>
         <div>
           No swipes. No chats. Just real <span className="crucial">meetings</span>. Immediately.

@@ -8,7 +8,7 @@ CREATE SCHEMA cache AUTHORIZATION doadmin;
 --
 
 CREATE TYPE app.activity AS ENUM
-    ('cafe', 'cinema', 'museum', 'art', 'bbq', 'beach', 'bar', 'billiards', 'bowling', 'canoeing', 'circus', 'climbing', 'concert', 'confectionery', 'cooking', 'cycling', 'dancing', 'fishing', 'football', 'games', 'gym', 'hiking', 'karaoke', 'lunapark', 'mall', 'park', 'party', 'pingpong', 'pub', 'restaurant', 'shopping', 'skating', 'snorkeling', 'surfing', 'swimming', 'television', 'tennis', 'theater', 'zoo', 'running');
+    ('cafe', 'cinema', 'museum', 'art', 'bbq', 'beach', 'bar', 'billiards', 'bowling', 'canoeing', 'circus', 'climbing', 'club', 'concert', 'confectionery', 'cooking', 'cycling', 'dancing', 'fishing', 'football', 'gallery', 'games', 'gym', 'hiking', 'karaoke', 'lunapark', 'mall', 'park', 'party', 'pingpong', 'pool', 'pub', 'restaurant', 'shopping', 'skating', 'snorkeling', 'surfing', 'swimming', 'television', 'tennis', 'theater', 'zoo', 'running');
 
 ALTER TYPE app.activity OWNER TO doadmin;
 

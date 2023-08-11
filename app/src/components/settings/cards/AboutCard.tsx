@@ -16,76 +16,80 @@ type TAboutProps = {
 
 const activitiesOptions: TSettingsDropdownOption<Activity>[] = [
   {
-    value: Activity.ART,
-    text: 'Art',
-  },
-  {
     value: Activity.BAR,
     text: 'Bar',
   },
-  {
-    value: Activity.BBQ,
-    text: 'Barbecue',
-  },
+  // {
+  //   value: Activity.BBQ,
+  //   text: 'Barbecue',
+  // },
   {
     value: Activity.BEACH,
     text: 'Beach',
   },
-  {
-    value: Activity.BILLIARDS,
-    text: 'Billiards',
-  },
-  {
-    value: Activity.BOWLING,
-    text: 'Bowling',
-  },
+  // {
+  //   value: Activity.BILLIARDS,
+  //   text: 'Billiards',
+  // },
+  // {
+  //   value: Activity.BOWLING,
+  //   text: 'Bowling',
+  // },
   {
     value: Activity.CAFE,
     text: 'Cafe',
   },
-  {
-    value: Activity.CANOEING,
-    text: 'Canoeing',
-  },
+  // {
+  //   value: Activity.CANOEING,
+  //   text: 'Canoeing',
+  // },
   {
     value: Activity.CINEMA,
     text: 'Cinema',
   },
-  {
-    value: Activity.CIRCUS,
-    text: 'Circus',
-  },
-  {
-    value: Activity.CLIMBING,
-    text: 'Climbing',
-  },
+  // {
+  //   value: Activity.CIRCUS,
+  //   text: 'Circus',
+  // },
+  // {
+  //   value: Activity.CLIMBING,
+  //   text: 'Climbing',
+  // },
   {
     value: Activity.CONCERT,
     text: 'Concert',
   },
+  // {
+  //   value: Activity.CONFECTIONERY,
+  //   text: 'Confectionery',
+  // },
+  // {
+  //   value: Activity.COOKING,
+  //   text: 'Cooking',
+  // },
+  // {
+  //   value: Activity.CYCLING,
+  //   text: 'Cycling',
+  // },
+  // {
+  //   value: Activity.DANCING,
+  //   text: 'Dancing',
+  // },
+  // {
+  //   value: Activity.FISHING,
+  //   text: 'Fishing',
+  // },
+  // {
+  //   value: Activity.FOOTBALL,
+  //   text: 'Football',
+  // },
+  // {
+  //   value: Activity.GALLERY,
+  //   text: 'Gallery',
+  // },
   {
-    value: Activity.CONFECTIONERY,
-    text: 'Confectionery',
-  },
-  {
-    value: Activity.COOKING,
-    text: 'Cooking',
-  },
-  {
-    value: Activity.CYCLING,
-    text: 'Cycling',
-  },
-  {
-    value: Activity.DANCING,
-    text: 'Dancing',
-  },
-  {
-    value: Activity.FISHING,
-    text: 'Fishing',
-  },
-  {
-    value: Activity.FOOTBALL,
-    text: 'Football',
+    value: Activity.ART,
+    text: 'Gallery',
   },
   {
     value: Activity.GAMES,
@@ -95,18 +99,18 @@ const activitiesOptions: TSettingsDropdownOption<Activity>[] = [
     value: Activity.GYM,
     text: 'Gym',
   },
-  {
-    value: Activity.HIKING,
-    text: 'Hiking',
-  },
-  {
-    value: Activity.KARAOKE,
-    text: 'Karaoke',
-  },
-  {
-    value: Activity.LUNAPARK,
-    text: 'Luna-park',
-  },
+  // {
+  //   value: Activity.HIKING,
+  //   text: 'Hiking',
+  // },
+  // {
+  //   value: Activity.KARAOKE,
+  //   text: 'Karaoke',
+  // },
+  // {
+  //   value: Activity.LUNAPARK,
+  //   text: 'Luna-park',
+  // },
   {
     value: Activity.MALL,
     text: 'Mall',
@@ -119,13 +123,17 @@ const activitiesOptions: TSettingsDropdownOption<Activity>[] = [
     value: Activity.PARK,
     text: 'Park',
   },
+  // {
+  //   value: Activity.PARTY,
+  //   text: 'Party',
+  // },
+  // {
+  //   value: Activity.PINGPONG,
+  //   text: 'Ping-pong',
+  // },
   {
-    value: Activity.PARTY,
-    text: 'Party',
-  },
-  {
-    value: Activity.PINGPONG,
-    text: 'Ping-pong',
+    value: Activity.POOL,
+    text: 'Pool',
   },
   {
     value: Activity.PUB,
@@ -135,38 +143,38 @@ const activitiesOptions: TSettingsDropdownOption<Activity>[] = [
     value: Activity.RESTAURANT,
     text: 'Restaurant',
   },
-  {
-    value: Activity.RUNNING,
-    text: 'Running',
-  },
-  {
-    value: Activity.SHOPPING,
-    text: 'Shopping',
-  },
-  {
-    value: Activity.SKATING,
-    text: 'Skating',
-  },
-  {
-    value: Activity.SNORKELING,
-    text: 'Snorkeling',
-  },
-  {
-    value: Activity.SURFING,
-    text: 'Surfing',
-  },
-  {
-    value: Activity.SWIMMING,
-    text: 'Swimming',
-  },
-  {
-    value: Activity.TELEVISION,
-    text: 'Television',
-  },
-  {
-    value: Activity.TENNIS,
-    text: 'Tennis',
-  },
+  // {
+  //   value: Activity.RUNNING,
+  //   text: 'Running',
+  // },
+  // {
+  //   value: Activity.SHOPPING,
+  //   text: 'Shopping',
+  // },
+  // {
+  //   value: Activity.SKATING,
+  //   text: 'Skating',
+  // },
+  // {
+  //   value: Activity.SNORKELING,
+  //   text: 'Snorkeling',
+  // },
+  // {
+  //   value: Activity.SURFING,
+  //   text: 'Surfing',
+  // },
+  // {
+  //   value: Activity.SWIMMING,
+  //   text: 'Swimming',
+  // },
+  // {
+  //   value: Activity.TELEVISION,
+  //   text: 'Television',
+  // },
+  // {
+  //   value: Activity.TENNIS,
+  //   text: 'Tennis',
+  // },
   {
     value: Activity.THEATER,
     text: 'Theater',
@@ -210,7 +218,7 @@ export default function AboutCard({ user, minActivitiesNumber, maxActivitiesNumb
         multiple
         options={activitiesOptions}
         value={user.activities}
-        label="What I like doing"
+        label="Where I like going"
         onChange={handleUpdateActivities}
         minValuesNumber={minActivitiesNumber}
         maxValuesNumber={maxActivitiesNumber}
