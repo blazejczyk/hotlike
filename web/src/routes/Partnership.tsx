@@ -24,7 +24,7 @@ function Partnership() {
         chance they'll even come back.
       </Paragraph>
       <Paragraph>
-        If it sounds interesting to you, you can contact us by sending an email to <a href="mailto:hotlike@hotlike.com">hotlike@hotlike.com</a>.
+        If it sounds interesting to you, you can contact us by sending an email to <a href="mailto:hotlike@hotlike.app">hotlike@hotlike.app</a>.
         Please attach an information about the business type and/or activities that your business represents.
         Tell us something more about your business and what you can offer to our users.
       </Paragraph>
