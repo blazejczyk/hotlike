@@ -4,7 +4,7 @@ const appConfig = {
   expo: {
     name: 'HotLike',
     slug: 'hotlike',
-    version: '1.0.2',
+    version: '1.0.3',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
@@ -18,7 +18,7 @@ const appConfig = {
     ],
     android: {
       package: 'com.hotlike.hotlike',
-      versionCode: 3,
+      versionCode: 4,
       googleServicesFile: process.env.GOOGLE_SERVICES_JSON,
       config: {
         googleMaps: {
